@@ -6,4 +6,19 @@
  */
 
 // 請在下方寫下你的程式碼
+import fetch from "node-fetch";
 
+interface Data {
+  id: string;
+  title: string;
+}
+
+export async function fetchData(url: string): Promise<Data> {
+  try {
+    return await fetch(url)
+      .then((response) => response.json())
+      .then((data) => data as Data);
+  } catch (error) {
+    throw new Error("error");
+  }
+}

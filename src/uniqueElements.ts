@@ -4,6 +4,18 @@
  * @param array - 一個數字陣列
  * @returns - 回傳包含所有唯一元素的新陣列
  */
+
+interface Obj {
+  [key: number]: number;
+}
+
 export function uniqueElements(array: number[]): number[] {
-    // 請在此處寫下你的程式碼
+  // 請在此處寫下你的程式碼
+  let obj: Obj = {};
+
+  array.forEach((i) => {
+    obj[i] ? obj[i]++ : (obj[i] = 1);
+  });
+
+  return Object.keys(obj).map((i) => Number(i));
 }
